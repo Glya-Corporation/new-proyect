@@ -1,0 +1,360 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&family=Dosis&family=Josefin+Sans&family=Merriweather&family=Montserrat:ital@0;1&family=Ubuntu&display=swap');
+@import url('./stylesSheets/colors.css');
+@import url('./stylesSheets/fonts.css');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primario: #af0069;
+    --primarioTransparente: #af006970;
+    --secundario: #48002b;
+    --negro: #000000;
+    --blanco: #ffffff;
+}
+
+li {
+    list-style: none;
+}
+
+header {
+    width: 100vw;
+    height: 3rem;
+    background-color: var(--primario);
+    position: sticky;
+    top: 0;
+    left: 0;
+    color: var(--blanco);
+    z-index: 900;
+}
+
+header nav {
+    height: 100%;
+    display: flex;
+    position: relative;
+    padding: .5rem 1.5rem;
+    justify-content: left;
+    align-items: center;
+    z-index: 900;
+}
+
+header nav h4 {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+}
+
+.icono-menu {
+    cursor: pointer;
+    transition: all .5s linear;
+}
+
+.menu {
+    position: fixed;
+    display: grid;
+    background-color: var(--primario);
+    width: 100vw;
+    height: calc(100vh - 3rem);
+    top: 3rem;
+    left: 0;
+    padding: .5rem 1.5rem;
+    transform: translateX(-100vw);
+    transition: all .4s linear;
+    overflow-y: scroll;
+    z-index: 900;
+}
+
+.subtitulo {
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+.mostrar-menu {
+    transform: translateX(0);
+}
+
+.girar {
+    transform: rotateY(180deg);
+}
+
+header nav ul li {
+    display: flex;
+    gap: 5px;
+    list-style: none;
+    align-items: center;
+}
+
+.a {
+    text-decoration: none;
+    color: var(--blanco);
+    cursor: pointer;
+    padding: 15px;
+    transition: all .3s linear;
+    border-radius: 2rem;
+}
+
+header nav ul li a:hover {
+    background-color: #ffffff70;
+    color: var(--secundario);
+    border-radius: 2rem;
+}
+
+.contenedor {
+    display: grid;
+    width: 100vw;
+}
+
+.section-form {
+    margin: 20px auto;
+    width: 80vw;
+    background-color: var(--primarioTransparente);
+    border-radius: 1rem;
+    padding: 2.5rem 1rem;
+    text-align: center;
+}
+
+.input-form {
+    border: none;
+    border-radius: 1rem;
+    width: 70%;
+    height: 2.5rem;
+    padding: .7rem;
+    margin-top: 10px;
+    background-color: #ffffff70;
+}
+
+.input-form:focus {
+    outline: none;
+}
+
+.description {
+    resize: none;
+    height: 6rem;
+}
+
+.titulo {
+    text-align: center;
+    padding: .5rem;
+    margin: 10px;
+}
+
+.btn_form {
+    background-color: var(--primario);
+    color: var(--blanco);
+    font-size: 18px;
+}
+
+.section-clientes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.contact-card {
+    text-align: center;
+    width: 250px;
+    box-shadow: 0px 0px 15px #00000070;
+    background-color: var(--primarioTransparente);
+    padding: 1rem;
+    border-radius: 1rem;
+    margin: auto;
+}
+
+.contact-card--data {
+    margin: 10px 0;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.fechas-filtrado {
+    width: 100vw;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.fechas--filtrado-input {
+    width: 9rem;
+    height: 1.5rem;
+    border: .5px solid var(--secundario);
+    border-radius: 1rem;
+    background-color: transparent;
+    text-align: center;
+}
+
+.btn_filtrar {
+    width: 6rem;
+    height: 2rem;
+    border-radius: .5rem;
+    border: transparent;
+    background-color: var(--primario);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 2px;
+}
+
+.btnEliminarCliente {
+    border: transparent;
+    padding: .6rem;
+    border-radius: .5rem;
+    background-color: var(--primario);
+    color: #ffffff;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+.btn_cierre {
+    margin: auto;
+    padding: .5rem;
+    border: transparent;
+    background-color: var(--primario);
+    color: #ffffff;
+    border-radius: .5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+
+.li,
+.table {
+    padding: .5rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr .5fr .5fr;
+    gap: 3px;
+    width: 100%;
+    text-align: center;
+    border-bottom: .5px #000000 dashed;
+    font-size: 14px;
+}
+
+.ver_registro {
+    border-radius: .5rem;
+    width: 80%;
+    padding: 0 .5rem;
+    border: .5px solid #00000040;
+    background-color: var(--primario);
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.header-register {
+    padding: 1rem;
+}
+
+.li-register {
+    list-style: none;
+}
+
+.list-register {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 1rem;
+    margin: 1rem 0;
+    border-bottom: 1px dashed #000000;
+}
+
+.icon-closed {
+    cursor: pointer;
+    position: relative;
+    margin-left: 95%;
+}
+
+.form-advance {
+    display: grid;
+    padding: 1rem;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+}
+
+.advance {
+    width: 100%;
+}
+
+.descripcion {
+    width: 100%;
+    grid-column: 1 / 3;
+}
+
+.btn-advance {
+    width: 100%;
+    grid-column: 1 / 3;
+}
+
+.btn-add-advances {
+    border-radius: 50%;
+    font-size: 30px;
+    background: var(--primario);
+    padding: .5rem;
+    color: var(--blanco);
+    border: transparent;
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 500;
+}
+
+.advances {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: var(--blanco);
+    overflow: auto;
+}
+
+.list-advances {
+    margin-bottom: 1rem;
+    padding: 0;
+}
+
+.total-advances {
+    position: fixed;
+    left: 1rem;
+    bottom: 1rem;
+}
+
+.section-cierre {
+    width: 100vw;
+}
+
+.section-cierre ul,
+.list-registered ul,
+.list-customersDeleted ul {
+    padding: 0;
+}
+
+.profile-form {
+    display: grid;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.profile-fields {
+    width: 100%;
+    height: 42px;
+    padding: .5rem;
+    border: .5px solid #00000040;
+    border-radius: .5rem;
+}
+
+.btn-profile {
+    margin: auto;
+    padding: .2rem .5rem;
+    width: 100%;
+    height: 39px;
+    background-color: var(--primario);
+    border: transparent;
+    color: var(--blanco);
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    border-radius: .5rem;
+}
+
