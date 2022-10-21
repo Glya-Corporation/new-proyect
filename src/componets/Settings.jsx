@@ -3,8 +3,7 @@ import colors from '../json/colors.json';
 import fonts from '../json/fonts.json';
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import ImportarToJSON from "./ImportarToJSON";
 
 
 const Settings = () => {
@@ -90,6 +89,12 @@ const Settings = () => {
                             ))
                         }
                     </ul>
+                </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="3">
+                <Accordion.Header>Importar</Accordion.Header>
+                <Accordion.Body>
+                    <ImportarToJSON />
                 </Accordion.Body>
             </Accordion.Item>
         </Accordion>

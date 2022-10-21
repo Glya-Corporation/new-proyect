@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ExportToJSON from './ExportToJSON'
 
 const Header = ({ savedPercentage }) => {
     const [menuIsVisible, setMenuIsVisible] = useState('')
@@ -60,8 +61,7 @@ const Header = ({ savedPercentage }) => {
                     <li onClick={() => menu('/')}><span className="material-symbols-outlined iconos-nemu">event</span> <span className="a">Reservaciones</span> </li>
                     <li onClick={() => menu('/closed')}><span className="material-symbols-outlined iconos-nemu">published_with_changes</span> <span className="a">Cierre Semanal</span> </li>
                     <li onClick={() => menu('/deleted-customers')}><span className="material-symbols-outlined iconos-nemu">delete</span> <span className="a">Clientes Eliminados</span> </li>
-                    <li onClick={() => alert('Proximamente')}><span className="material-symbols-outlined iconos-nemu">delete</span> <span className="a">Exportar Datos</span> </li>
-                    {/* <li><span className="material-symbols-outlined iconos-nemu">edit</span><a onClick={reajuste}>Reajuste</a></li> */}
+                    <li onClick={() => ExportToJSON()}><span className="material-symbols-outlined iconos-nemu">file_download</span> <span className="a">Exportar Datos</span> </li>
                     <li onClick={() => menu('/settings')}><span className="material-symbols-outlined iconos-nemu">settings</span> <span className="a">Configuraciones</span> </li>
                 </ul>
             </nav>
