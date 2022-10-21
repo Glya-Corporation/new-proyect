@@ -8,7 +8,7 @@ const ImportarToJSON = () => {
     const registro = JSON.parse(window.localStorage.getItem('registro'))
     const dataToImport = [ 'clientesGuardados', 'clientesEliminados', 'porcentaje', 'idGuardada', 'registro'];
 
-    const [dataMain, setDataMain] = useState('')
+    const [dataMain, setDataMain] = useState(false)
 
     const readFile = file => {
         if(!file) return
