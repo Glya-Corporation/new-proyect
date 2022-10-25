@@ -64,7 +64,7 @@ header nav h4 {
     padding: .5rem 1.5rem;
     transform: translateX(-100vw);
     transition: all .4s linear;
-    overflow-y: scroll;
+    overflow: auto;
     z-index: 900;
 }
 
@@ -304,7 +304,7 @@ header nav ul li a:hover {
     padding: .5rem;
     color: var(--blanco);
     border: transparent;
-    position: absolute;
+    position: fixed;
     right: 1rem;
     bottom: 1rem;
     z-index: 500;
@@ -367,3 +367,14 @@ header nav ul li a:hover {
     border-radius: .5rem;
 }
 
+.data-export {
+    width: 330px;
+    overflow: auto;
+    padding: .5rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.data-export>p {
+    cursor: pointer;
+}

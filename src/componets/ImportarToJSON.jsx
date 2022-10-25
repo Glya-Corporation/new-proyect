@@ -1,10 +1,7 @@
-const ImportarToJSON = () => {
-    const clientesGuardados = JSON.parse(window.localStorage.getItem('clientesGuardados'))
-    const clientesEliminados = JSON.parse(window.localStorage.getItem('clientesEliminados'))
-    const porcentaje = JSON.parse(window.localStorage.getItem('porcentaje'))
-    const idGuardada = JSON.parse(window.localStorage.getItem('idGuardada'))
-    const registro = JSON.parse(window.localStorage.getItem('registro'))
-    const dataToImport = [ 'clientesGuardados', 'clientesEliminados', 'porcentaje', 'idGuardada', 'registro'];
+const   ImportarToJSON = () => {
+    const dataToImport = [ 'clientesGuardados', 'clientesEliminados', 'porcentaje', 'registro', 'advances', 'user'];
+
+    let dataMain = null
 
     const readFile = file => {
         if(!file) return
@@ -13,12 +10,18 @@ const ImportarToJSON = () => {
         fileReader.readAsText( file )
         
         fileReader.onload = () => {
-            const dataMain = JSON.parse(fileReader.result)
-            console.log(dataMain)
+            dataMain = JSON.parse(fileReader.result)
         }
 
     }
 
+    const sendData = () => {
+        for (let i = 0; i < dataToImport.length; i++) {
+            let text = dataToImport[i]
+            window.localStorage.setItem(`${text}`, JSON.stringify(dataMain[i][`${text}`]))
+            location.reload();
+        }
+    }
 
     return (
         <div>
@@ -28,6 +31,17 @@ const ImportarToJSON = () => {
                 id=""
                 onChange={e => readFile(e.target.files[0])} 
             />
+            <button
+                onClick={() => sendData()}
+                style={{
+                    border: 'transparent',
+                    padding: '.5rem',
+                    background: 'var(--primario)',
+                    borderRadius: '.5rem',
+                    color: 'var(--blanco)',
+                    marginTop: '1rem'
+                }}    
+            >Cargar</button>
         </div>
     );
 };

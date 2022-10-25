@@ -4,6 +4,8 @@ import fonts from '../json/fonts.json';
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import ImportarToJSON from "./ImportarToJSON";
+import ExportToJSON from "./ExportToJSON";
+import Porcentaje from "./Porcentaje";
 
 
 const Settings = () => {
@@ -92,6 +94,18 @@ const Settings = () => {
                 </Accordion.Body>
             </Accordion.Item>
             <Accordion.Item eventKey="3">
+                <Accordion.Header>Porcentaje</Accordion.Header>
+                <Accordion.Body>
+                    <Porcentaje />
+                </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="4">
+                <Accordion.Header>Exportar</Accordion.Header>
+                <Accordion.Body>
+                    <ExportToJSON />
+                </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="5">
                 <Accordion.Header>Importar</Accordion.Header>
                 <Accordion.Body>
                     <ImportarToJSON />

@@ -24,7 +24,7 @@ const Customers = ({ clientes }) => {
 
     function eliminarCliente(e) {
         let id = parseInt(e.target.parentElement.id)
-        let idx = clientes.findIndex(elemento => elemento.id == id)
+        let idx = clientes.findIndex(elemento => Number(elemento.id) == Number(id))
         alertDelete(idx)
     }
 
@@ -45,7 +45,8 @@ const Customers = ({ clientes }) => {
             clientesEliminados.unshift(clientesDelete[0])
             
             window.localStorage.setItem('clientesEliminados', JSON.stringify(clientesEliminados))
-            alert('Cliente eliminado satisfactoriamente')
+            alert('Cliente eliminado satisfactoriamente');
+            location.reload();
         } else {
             alert('No se ha eliminado ningun cliente')
         }
