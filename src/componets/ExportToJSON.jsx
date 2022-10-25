@@ -6,7 +6,23 @@ const ExportToJSON = () => {
     const porcentaje = JSON.parse(window.localStorage.getItem('porcentaje'))
     const idGuardada = JSON.parse(window.localStorage.getItem('idGuardada'))
     const registro = JSON.parse(window.localStorage.getItem('registro'))
-    const dataToExport = [ clientesGuardados, clientesEliminados, porcentaje, idGuardada, registro];
+    const dataToExport = [
+        {
+            clientesGuardados: clientesGuardados
+        },
+        {
+            clientesEliminados: clientesEliminados
+        },
+        {
+            porcentaje: porcentaje
+        },
+        {
+            idGuardada: idGuardada
+        },
+        {
+            registro: registro
+        }
+    ];
 
 
     const blob = new Blob([JSON.stringify(dataToExport)], {type: 'text/plain;charset=utf-8'})

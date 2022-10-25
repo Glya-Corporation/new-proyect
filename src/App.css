@@ -103,6 +103,15 @@ header nav ul li a:hover {
     border-radius: 2rem;
 }
 
+.form-login {
+    padding: 2rem;
+}
+
+.form-login button {
+    border: transparent;
+    background-color: var(--primario);
+}
+
 .contenedor {
     display: grid;
     width: 100vw;

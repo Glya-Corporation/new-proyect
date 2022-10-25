@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 const ImportarToJSON = () => {
     const clientesGuardados = JSON.parse(window.localStorage.getItem('clientesGuardados'))
     const clientesEliminados = JSON.parse(window.localStorage.getItem('clientesEliminados'))
@@ -8,8 +6,6 @@ const ImportarToJSON = () => {
     const registro = JSON.parse(window.localStorage.getItem('registro'))
     const dataToImport = [ 'clientesGuardados', 'clientesEliminados', 'porcentaje', 'idGuardada', 'registro'];
 
-    const [dataMain, setDataMain] = useState(false)
-
     const readFile = file => {
         if(!file) return
         const fileReader = new FileReader();
@@ -17,8 +13,7 @@ const ImportarToJSON = () => {
         fileReader.readAsText( file )
         
         fileReader.onload = () => {
-            console.log(JSON.parse(fileReader.result))
-            setDataMain(true)
+            const dataMain = JSON.parse(fileReader.result)
             console.log(dataMain)
         }
 

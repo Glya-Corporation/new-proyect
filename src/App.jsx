@@ -7,10 +7,12 @@ import Closed from './componets/Closed'
 //import reajuste from './componets/Reajuste'
 import DeletedCustomers from './componets/DeletedCustomers'
 import Settings from './componets/Settings'
-import { HashRouter, Routes, Route} from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
+import ProtectedRoutes from './componets/ProtectedRoutes'
+import Login from './componets/Login'
 
 
-function App() {  
+function App() {
   let clientes = JSON.parse(window.localStorage.getItem('clientesGuardados'))
   let savedPercentage = JSON.parse(window.localStorage.getItem('porcentaje'))
   let registro = JSON.parse(window.localStorage.getItem('registro'))
@@ -22,14 +24,17 @@ function App() {
   return (
     <HashRouter>
       <div className={font}>
-        <Header savedPercentage={savedPercentage}/>
+        <Header savedPercentage={savedPercentage} />
         <Routes>
-          <Route path="/" element={<Register clientes={clientes} />} />
-          <Route path="/customers" element={<Customers clientes={clientes} />} />
-          <Route path="/reports" element={<Reports clientes={clientes} porcentaje={savedPercentage} />} />
-          <Route path="/closed" element={<Closed clientes={clientes} registro={registro} porcentaje={savedPercentage} />} />
-          <Route path="/deleted-customers" element={<DeletedCustomers />} />
-          <Route path="/settings" element={<Settings />} />
+          <Route path="/login" element={<Login />} />
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/" element={<Register clientes={clientes} />} />
+            <Route path="/customers" element={<Customers clientes={clientes} />} />
+            <Route path="/reports" element={<Reports clientes={clientes} porcentaje={savedPercentage} />} />
+            <Route path="/closed" element={<Closed clientes={clientes} registro={registro} porcentaje={savedPercentage} />} />
+            <Route path="/deleted-customers" element={<DeletedCustomers />} />
+            <Route path="/settings" element={<Settings />} />
+          </Route>
         </Routes>
       </div>
     </HashRouter>
