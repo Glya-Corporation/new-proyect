@@ -6,8 +6,7 @@ const Register = ({ clientes }) => {
 
     const { register, handleSubmit, reset } = useForm();
     const [service, setService] = useState('');
-
-
+    
     const submit = nuevoCliente => {
         nuevoCliente.id = Number(new Date())
         nuevoCliente.service = service

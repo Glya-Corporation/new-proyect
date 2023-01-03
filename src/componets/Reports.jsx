@@ -11,6 +11,22 @@ const Reports = ({ clientes, porcentaje }) => {
     const [btnAdvances, setBtnAdvances] = useState(false)
     const [advances, setAdvances] = useState(true)
 
+    if (porcentaje === null) {
+        savePorcentage()
+    }
+
+    const savePorcentage = () => {
+        let porcentaje = prompt('Ingresa el porcentaje de ganancia con un formato de numero entero!!');
+
+        if (porcentaje) {
+            window.localStorage.setItem('porcentaje', JSON.stringify(porcentaje));
+            alert(`Listo! has cambiado el porsentaje de ganancias, ahora es del: ${porcentaje}%`)
+            location.reload();
+        } else {
+            alert('No has guardado ningun valor')
+        }
+    }
+
     const totalAdvances = () => {
         let total = 0
         let advancesSumar = JSON.parse(window.localStorage.getItem('advances'))

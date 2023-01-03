@@ -19,7 +19,6 @@ const Customers = ({ clientes }) => {
             })
         }
         setClientesPrint([...clientesFilter])
-        eliminarCliente()
     }
 
     function eliminarCliente(e) {

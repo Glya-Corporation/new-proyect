@@ -23,11 +23,11 @@ function App() {
   return (
     <HashRouter>
       <div className={font}>
-        <Header savedPercentage={savedPercentage} />
+        <Header />
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route element={<ProtectedRoutes />}>
-            <Route path="/" element={<Register clientes={clientes} />} />
+            <Route path="/" element={<Register clientes={clientes} savedPercentage={savedPercentage} />} />
             <Route path="/customers" element={<Customers clientes={clientes} />} />
             <Route path="/reports" element={<Reports clientes={clientes} porcentaje={savedPercentage} />} />
             <Route path="/closed" element={<Closed clientes={clientes} registro={registro} porcentaje={savedPercentage} />} />

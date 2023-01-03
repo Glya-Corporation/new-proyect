@@ -11,8 +11,8 @@ import Porcentaje from "./Porcentaje";
 const Settings = () => {
     const [edit, setEdit] = useState(false)
     const { register, handleSubmit, reset } = useForm()
-    const user = JSON.parse(window.localStorage.getItem('user'))
-
+    const user = JSON.parse(window.localStorage.getItem('users'))
+    const userId = window.localStorage.getItem('userId')
 
     const changeColor = color => {
         window.localStorage.setItem('color', color)
@@ -25,12 +25,20 @@ const Settings = () => {
     }
 
     const submit = newUser => {
-        if (newUser.firstName !== '' && newUser.lastName !== '' && newUser.date !== '' && newUser.email !== '') {
-            window.localStorage.setItem('user', JSON.stringify(newUser))
-            window.location.reload()
-        } else {
-            alert('Debe llenar todos los campos')
-        }
+        user[userId].name = newUser.name;
+        user[userId].surname = newUser.surname;
+        user[userId].date = newUser.date;
+        user[userId].email = newUser.email;
+        
+        window.localStorage.setItem('users', JSON.stringify(user));
+        window.location.reload()
+    }
+
+    const closeSession = () => {
+        window.localStorage.removeItem('token');
+        window.localStorage.removeItem('userId');
+        window.sessionStorage.removeItem('token');
+        window.location.reload()
     }
 
     const resetData = () => {
@@ -46,22 +54,23 @@ const Settings = () => {
                         {
                             edit ? (
                                 <>
-                                    <input className='profile-fields' placeholder={user?.firstName} type='text' {...register('firstName')} />
-                                    <input className='profile-fields' placeholder={user?.lastName} type='text' {...register('lastName')} />
-                                    <input className='profile-fields' placeholder={user?.date} type='date' {...register('date')} />
-                                    <input className='profile-fields' placeholder={user?.email} type='email' {...register('email')} />
+                                    <input className='profile-fields' placeholder={user?.[userId].name} type='text' {...register('name')} required/>
+                                    <input className='profile-fields' placeholder={user?.[userId].surname} type='text' {...register('surname')} required/>
+                                    <input className='profile-fields' type='date' {...register('date')} required/>
+                                    <input className='profile-fields' placeholder={user?.[userId].email} type='email' {...register('email')} required/>
                                     <button className='btn-profile'><span className="material-symbols-outlined">save</span>Guardar Cambios</button>
                                 </>
                             ) : (
                                 <>
-                                    <label className='profile-fields'>{user?.firstName}</label>
-                                    <label className='profile-fields'>{user?.lastName}</label>
-                                    <label className='profile-fields'>{user?.date}</label>
-                                    <label className='profile-fields'>{user?.email}</label>
+                                    <label className='profile-fields'>{user[userId].name}</label>
+                                    <label className='profile-fields'>{user[userId].surname}</label>
+                                    <label className='profile-fields'>{user[userId].date}</label>
+                                    <label className='profile-fields'>{user[userId].email}</label>
                                 </>
                             )
                         }
                         <button type="button" onClick={() => setEdit(!edit)} className='btn-profile'><span className="material-symbols-outlined">{user === null ? 'add' : 'edit'}</span>{user === null ? 'Agregar' : 'Editar'} usuario</button>
+                        <button type="button" onClick={() => closeSession()} className='btn-profile'><span className="material-symbols-outlined">logout</span>Cerrar sesión</button>
                     </form>
                 </Accordion.Body>
             </Accordion.Item>

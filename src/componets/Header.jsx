@@ -1,14 +1,13 @@
-import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Porcentaje from "./Porcentaje";
 
 const Header = ({ savedPercentage }) => {
     const [menuIsVisible, setMenuIsVisible] = useState('')
     const [girar, setGirar] = useState('')
     const [iconMenu, setIconMenu] = useState('menu')
     const navigate = useNavigate()
-    const user = JSON.parse(window.localStorage.getItem('user'))
+    const user = JSON.parse(window.localStorage.getItem('users'));
+    const userId = window.localStorage.getItem('userId');
 
     const showMenu = () => {
         if (menuIsVisible !== 'mostrar-menu' && girar !== 'girar') {
@@ -29,10 +28,6 @@ const Header = ({ savedPercentage }) => {
 
     }
 
-    useEffect(() =>{
-        if(savedPercentage === null) Porcentaje()
-    },[])
-
     const menu = ruta => {
         navigate(ruta)
         hideMenu()
@@ -42,7 +37,7 @@ const Header = ({ savedPercentage }) => {
         <header>
             <nav>
                 <span onClick={showMenu} className={`material-symbols-outlined icono-menu ${girar}`}>{iconMenu}</span>
-                <h4>Hola! {user?.firstName} {user?.lastName} {( (user?.firstName)?.toLowerCase() === 'andreina' || (user?.firstName)?.toLowerCase() === 'nina') && 'Te Amo'}</h4>
+                <h4>Hola! {user?.[userId]?.name} {user?.[userId]?.surname} {((user?.[userId]?.name)?.toLowerCase() === 'andreina' || (user?.[userId]?.name)?.toLowerCase() === 'nina') && 'Te Amo'}</h4>
                 <ul id="menu" className={`menu ${menuIsVisible}`}>
                     <li onClick={() => menu('/')}><span className="material-symbols-outlined iconos-nemu">person_add</span> <span className="a">Nuevo Cliente</span> </li>
                     <li onClick={() => menu('/customers')}><span className="material-symbols-outlined iconos-nemu">group</span> <span className="a">Clientes</span> </li>
