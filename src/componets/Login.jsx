@@ -3,23 +3,39 @@ import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({color}) => {
     const { register, handleSubmit, reset } = useForm();
     const [isLogged, setIsLogged] = useState(true);
     const usersLocal =  JSON.parse(window.localStorage.getItem('users')) || JSON.parse(window.sessionStorage.getItem('users')) || [];
     const navigate = useNavigate();
 
     const submit = userIn => {
-        if (usersLocal.length < 1) return alert("Haven't users in local storage, first register a user")
-        const searchUser = usersLocal.findIndex(user => user.email === userIn.email && String(user.password) === String(userIn.password));
+        const { email, password, remember } = userIn;
+        
+        if(email === 'admin@example.com' && password === '1234' && usersLocal.length < 1) {
+            const admin = {
+                date: "1997-11-18",
+                email: "admin@example.com",
+                name: "Admin",
+                password: "1234",
+                surname: "Owner"
+            };
+            
+            usersLocal.unshift(admin);
+            window.localStorage.setItem('users', JSON.stringify(usersLocal));
+        } else if(usersLocal.length < 1) {
+            return alert("Haven't users in local storage, first register a user");
+        }
+
+        const searchUser = usersLocal.findIndex(user => user.email === email && String(user.password) === String(password));
         
         window.localStorage.setItem('userId', searchUser);
         
-        if (searchUser !== -1) {
+        if (searchUser !== -1 || userIn.email === 'admin@example.com' && userIn.password === '1234') {
             if (userIn.remember) {
-                window.localStorage.setItem('token', userIn.remember)
+                window.localStorage.setItem('token', remember)
             } else {
-                window.sessionStorage.setItem('token', true)
+                window.sessionStorage.setItem('token', !remember)
             }
             reset('')
             navigate('/');
@@ -35,7 +51,7 @@ const Login = () => {
         const searchUser = usersLocal.find(user => user.email === email);
         if (searchUser) return alert('Este usuario ya existe');
         delete newUser.passwordRepeat;
-        usersLocal.unshift(newUser);
+        usersLocal.push(newUser);
         window.localStorage.setItem('users', JSON.stringify(usersLocal));
         alert('Usuario creado con exito');
         setIsLogged(!isLogged);
@@ -65,6 +81,11 @@ const Login = () => {
                         </Form.Group>
                         <p onClick={() => setIsLogged(!isLogged)} style={{ color: '#0055ff', textDecoration: 'underline' }}>You need an acount?</p>
                         <Button variant="primary" type="submit">Entrar</Button>
+                        <div className="test-data">
+                            <h5>Data Test</h5>
+                            <b>user: admin@example.com</b>
+                            <b>password: 1234</b>
+                        </div>
                     </Form>
                 ) : (
                     <Form className="form-login" onSubmit={handleSubmit(singUp)}>

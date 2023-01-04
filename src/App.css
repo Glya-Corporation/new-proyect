@@ -105,6 +105,16 @@ header nav ul li a:hover {
     border-radius: 2rem;
 }
 
+.test-data {
+    display: grid;
+    position: absolute;
+    right: 1rem;
+    bottom: 1.5rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: var(--primarioTransparente);
+}
+
 .form-login {
     padding: 2rem;
 }

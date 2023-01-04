@@ -25,7 +25,7 @@ function App() {
       <div className={font}>
         <Header />
         <Routes>
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login color={color}/>} />
           <Route element={<ProtectedRoutes />}>
             <Route path="/" element={<Register clientes={clientes} savedPercentage={savedPercentage} />} />
             <Route path="/customers" element={<Customers clientes={clientes} />} />
